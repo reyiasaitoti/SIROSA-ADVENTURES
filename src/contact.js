@@ -1,3 +1,6 @@
+const phoneNumber = '0713739277'
+
 window.SIROSA_CONTACT = Object.freeze({
-  whatsappNumber: '254794928779',
+  phoneNumber,
+  whatsappNumber: `254${phoneNumber.slice(1)}`,
 })

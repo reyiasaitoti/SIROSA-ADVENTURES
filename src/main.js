@@ -1,6 +1,7 @@
 const navigation = document.querySelector('.main-nav')
 const menuToggle = document.querySelector('.menu-toggle')
 const inquiryForm = document.querySelector('.inquiry-form')
+const planContact = document.querySelector('.plan-contact')
 const requestedPlace = new URLSearchParams(window.location.search).get('place')
 const journeyNames = {
   'mara-trails': 'Maasai Mara, 5 days',
@@ -10,6 +11,13 @@ const journeyNames = {
   'tsavo-tides': 'Tsavo & Diani, 8 days',
   'ol-pejeta': 'Ol Pejeta & Aberdare, 5 days',
 }
+
+const phoneLink = document.createElement('a')
+phoneLink.href = `tel:+254${window.SIROSA_CONTACT.phoneNumber.slice(1)}`
+phoneLink.textContent = window.SIROSA_CONTACT.phoneNumber
+phoneLink.setAttribute('aria-label', `Call SIROSA Adventures on ${phoneLink.textContent}`)
+planContact.querySelector('span').textContent = 'Call or email us directly'
+planContact.insertBefore(phoneLink, planContact.querySelector('a'))
 
 Array.from(inquiryForm.elements.journey.options).forEach((option) => {
   if (option.value && !journeyNames[option.value]) option.remove()
